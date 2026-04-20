@@ -7,14 +7,14 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Shopify, WordPress, React & PHP | Wepix" },
+      { title: "Services | Shopify, WordPress, React & PHP | Wepix" },
       {
         name: "description",
         content:
-          "Explore Wepix services: Shopify development, WordPress development, React apps and custom PHP solutions — engineered to convert and scale.",
+          "Explore Wepix services: Shopify development, WordPress development, React apps and custom PHP solutions, engineered to convert and scale.",
       },
-      { property: "og:title", content: "Services — Wepix" },
-      { property: "og:description", content: "Shopify, WordPress, React and custom PHP — built to perform." },
+      { property: "og:title", content: "Services | Wepix" },
+      { property: "og:description", content: "Shopify, WordPress, React and custom PHP, built to perform." },
     ],
   }),
   component: ServicesPage,
@@ -33,7 +33,7 @@ function ServicesPage() {
               End-to-end <span className="text-gradient-brand">digital craft</span>
             </h1>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              We design, engineer, launch and grow — across the platforms our clients trust most.
+              We design, engineer, launch and grow across the platforms our clients trust most.
             </p>
           </Reveal>
         </div>

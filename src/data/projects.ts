@@ -1,14 +1,4 @@
-import projShopify1 from "@/assets/project-shopify-1.jpg";
-import projShopify2 from "@/assets/project-shopify-2.jpg";
-import projWp1 from "@/assets/project-wp-1.jpg";
-import projWp2 from "@/assets/project-wp-2.jpg";
-import projReact1 from "@/assets/project-react-1.jpg";
-import projReact2 from "@/assets/project-react-2.jpg";
-import projPhp1 from "@/assets/project-php-1.jpg";
-import projHtml1 from "@/assets/project-html-1.jpg";
-import projYazhli from "@/assets/project-yazhli.jpg";
-
-export type Tech = "Shopify" | "WordPress" | "React" | "PHP" | "HTML";
+export type Tech = "Shopify" | "WordPress";
 
 export type Project = {
   slug: string;
@@ -17,161 +7,400 @@ export type Project = {
   tech: Tech;
   category: string;
   year: string;
-  image: string;
   excerpt: string;
   metrics: { label: string; value: string }[];
   scope: string[];
-  url?: string;
+  /** Live client site, used for homepage screenshot cover. */
+  url: string;
+  /**
+   * Optional card/hero image. Defaults to a thum.io homepage render of `url`.
+   * Use for password-only stores, static mockups in `/public/work-covers/`, or when thum.io mis-renders.
+   */
+  image?: string;
+};
+
+/** ~16:10 crop of the live homepage (external screenshot service). */
+export function homepageCoverUrl(websiteUrl: string): string {
+  const base = websiteUrl.replace(/\/+$/, "");
+  return `https://image.thum.io/get/width/1600/crop/1000/viewportWidth/1440/noanimate/${base}`;
+}
+
+export function projectCoverImage(p: Project): string {
+  return p.image ?? homepageCoverUrl(p.url);
+}
+
+const S = {
+  shopifyEthnic: {
+    tech: "Shopify" as const,
+    category: "Ethnic wear · D2C",
+    metrics: [
+      { label: "Platform", value: "Shopify 2.0" },
+      { label: "Focus", value: "Merch & checkout" },
+      { label: "Experience", value: "Mobile-first" },
+    ],
+    scope: ["Theme & sections", "Collections & navigation", "Checkout & payments", "Performance & SEO"],
+  },
+  shopifyFashion: {
+    tech: "Shopify" as const,
+    category: "Fashion · D2C",
+    metrics: [
+      { label: "Platform", value: "Shopify 2.0" },
+      { label: "Focus", value: "Brand & conversion" },
+      { label: "Experience", value: "Editorial PDPs" },
+    ],
+    scope: ["Storefront UX", "Product storytelling", "Promotions & upsells", "Analytics-ready tracking"],
+  },
+  shopifyKids: {
+    tech: "Shopify" as const,
+    category: "Kidswear · D2C",
+    metrics: [
+      { label: "Platform", value: "Shopify 2.0" },
+      { label: "Focus", value: "Trust & clarity" },
+      { label: "Experience", value: "Fast browse" },
+    ],
+    scope: ["Age/size navigation", "Theme customisation", "Shipping & policies", "Email capture"],
+  },
+  shopifySkincare: {
+    tech: "Shopify" as const,
+    category: "Beauty · D2C",
+    metrics: [
+      { label: "Platform", value: "Shopify 2.0" },
+      { label: "Focus", value: "Brand & education" },
+      { label: "Experience", value: "Clean PDPs" },
+    ],
+    scope: ["Ingredient-forward layouts", "Collections by concern", "Trust & reviews", "Subscription-ready flows"],
+  },
+  shopifyLounge: {
+    tech: "Shopify" as const,
+    category: "Loungewear · D2C",
+    metrics: [
+      { label: "Platform", value: "Shopify 2.0" },
+      { label: "Focus", value: "Comfort-first UX" },
+      { label: "Experience", value: "Size clarity" },
+    ],
+    scope: ["Lookbooks & grids", "Size guides", "Bundles & combos", "Checkout optimisation"],
+  },
+  wordpressInterior: {
+    tech: "WordPress" as const,
+    category: "Interior design · Studio",
+    metrics: [
+      { label: "Platform", value: "WordPress" },
+      { label: "Focus", value: "Portfolio & leads" },
+      { label: "Experience", value: "Editorial layouts" },
+    ],
+    scope: ["Custom theme", "Project galleries", "Services & process", "Contact & consultant CTAs"],
+  },
 };
 
 export const PROJECTS: Project[] = [
   {
+    slug: "alankar-chennai",
+    title: "Alankar Chennai",
+    client: "Alankar",
+    year: "2025",
+    url: "https://alankarchennai.in/",
+    image: "/work-covers/cover-01.png",
+    excerpt:
+      "Festive and occasion wear on Shopify: anarkalis, lehengas and drape dresses with a polished, high-trust shopping flow.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "eitara",
+    title: "Eitara",
+    client: "Eitara",
+    year: "2025",
+    url: "https://www.myeitara.com/",
+    image: "/work-covers/cover-02.png",
+    excerpt:
+      "Craft-led Indian wear with editorial storytelling: kurti sets, dresses and co-ords built for discovery and repeat purchases.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "velaura",
+    title: "Velaura by Sri Shanmuga Silks",
+    client: "Velaura",
+    year: "2025",
+    url: "https://velaura.in/",
+    image: "/work-covers/cover-03.png",
+    excerpt:
+      "Silks and sarees online with collection-led browsing, clear pricing tiers, and a heritage brand narrative.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "pearloze",
+    title: "Pearloze",
+    client: "Pearloze",
+    year: "2025",
+    url: "https://pearloze.com/",
+    image: "/work-covers/cover-04.png",
+    excerpt:
+      "Contemporary dresses, tops and skirts: a fashion-forward Shopify build with strong merchandising and social proof.",
+    ...S.shopifyFashion,
+  },
+  {
+    slug: "lifashion",
+    title: "Lifashion",
+    client: "PG International / Lifashion",
+    year: "2025",
+    url: "https://lifashion.co.in/",
+    image: "/work-covers/cover-20.webp",
+    excerpt:
+      "Kids’ apparel and unisex essentials: catalogue-heavy Shopify with age-based navigation and parent-friendly UX.",
+    ...S.shopifyKids,
+  },
+  {
+    slug: "reviash",
+    title: "Reviash",
+    client: "Reviash",
+    year: "2025",
+    url: "https://reviash.com/",
+    image: "/work-covers/cover-06.png",
+    excerpt:
+      "Affordable luxury womenswear: dresses, co-ords and scarves with a calm, editorial storefront.",
+    ...S.shopifyFashion,
+  },
+  {
     slug: "yazhli-collection",
     title: "Yazhli Collection",
     client: "Yazhli",
-    tech: "Shopify",
-    category: "Ethnic Wear · D2C",
     year: "2025",
-    image: projYazhli,
     url: "https://yazhlicollection.com/",
+    image: "/work-covers/cover-07.png",
     excerpt:
-      "A refined Shopify storefront for a premium Indian ethnic wear label — sarees, kurtis and festive collections with elegant browsing and seamless checkout.",
-    metrics: [
-      { label: "Conversion lift", value: "+42%" },
-      { label: "AOV", value: "+27%" },
-      { label: "Page speed", value: "92" },
-    ],
-    scope: ["Shopify 2.0 theme", "Custom collections", "Checkout optimisation"],
+      "Western and ethnic occasion wear: gowns, lehengas and kurta sets with minimal, breathable visual design.",
+    ...S.shopifyEthnic,
   },
   {
-    slug: "lumen-apparel",
-    title: "Lumen Apparel",
-    client: "Lumen Co.",
-    tech: "Shopify",
-    category: "Fashion · D2C",
-    year: "2025",
-    image: projShopify1,
+    slug: "label-jas",
+    title: "Label Jas",
+    client: "Label Jas",
+    year: "2026",
+    url: "https://labeljas.com/",
+    image: "/work-covers/cover-08.png",
     excerpt:
-      "A high-converting Shopify storefront with custom sections, lightning-fast PDPs and a redesigned checkout flow.",
-    metrics: [
-      { label: "Conversion lift", value: "+38%" },
-      { label: "AOV", value: "+22%" },
-      { label: "Page speed", value: "94" },
-    ],
-    scope: ["Shopify 2.0 theme", "Custom sections", "Klaviyo integration"],
+      "Emerging fashion label on Shopify: campaign-ready homepage, crisp collections, and conversion-focused PDPs.",
+    ...S.shopifyFashion,
   },
   {
-    slug: "noor-skincare",
-    title: "Noor Skincare",
-    client: "Noor Beauty",
-    tech: "Shopify",
-    category: "Beauty · D2C",
-    year: "2024",
-    image: projShopify2,
-    excerpt: "An editorial Shopify experience with elegant motion, build-a-routine quiz and subscriptions.",
-    metrics: [
-      { label: "Subscribers", value: "+62%" },
-      { label: "Bounce", value: "-31%" },
-      { label: "Repeat rate", value: "+45%" },
-    ],
-    scope: ["Theme dev", "Subscription flow", "Quiz funnel"],
-  },
-  {
-    slug: "estate-living",
-    title: "Estate Living",
-    client: "Estate Group",
-    tech: "WordPress",
-    category: "Real Estate",
+    slug: "ishika-trends",
+    title: "Ishika Trends",
+    client: "Ishika Trends",
     year: "2025",
-    image: projWp1,
-    excerpt: "A premium WordPress build with custom property CPTs, advanced filters and CRM sync.",
-    metrics: [
-      { label: "Inquiries", value: "+74%" },
-      { label: "Time on site", value: "+58%" },
-      { label: "PageSpeed", value: "92" },
-    ],
-    scope: ["Custom WP theme", "ACF + CPT UI", "HubSpot CRM"],
+    url: "https://ishikatrends.com/",
+    image: "/work-covers/cover-09.png",
+    excerpt:
+      "Full-range ethnic and fusion wear: kurti sets, gowns, sarees and maternity with strong category IA.",
+    ...S.shopifyEthnic,
   },
   {
-    slug: "scholar-academy",
-    title: "Scholar Academy",
-    client: "Scholar Edu",
-    tech: "WordPress",
-    category: "EdTech",
-    year: "2024",
-    image: projWp2,
-    excerpt: "A scalable LMS on WordPress with course builder, payments and progress tracking.",
-    metrics: [
-      { label: "Active learners", value: "12K+" },
-      { label: "Course completion", value: "+41%" },
-      { label: "Refunds", value: "-28%" },
-    ],
-    scope: ["LearnDash", "Stripe", "Custom dashboards"],
-  },
-  {
-    slug: "pulse-analytics",
-    title: "Pulse Analytics",
-    client: "Pulse Inc.",
-    tech: "React",
-    category: "SaaS · Dashboard",
+    slug: "uzvi",
+    title: "Uzvi",
+    client: "Uzvi",
     year: "2025",
-    image: projReact1,
-    excerpt: "A blazing fast analytics dashboard built with React, TanStack and a custom design system.",
-    metrics: [
-      { label: "Render time", value: "-67%" },
-      { label: "NPS", value: "+24" },
-      { label: "Activation", value: "+39%" },
-    ],
-    scope: ["React + Vite", "TanStack Query", "Design system"],
+    url: "https://www.uzviecostore.com/",
+    image: "/work-covers/cover-10.png",
+    excerpt:
+      "Skincare and beauty retail: product education, clean typography, and a trust-led path to purchase.",
+    ...S.shopifySkincare,
   },
   {
-    slug: "fork-co",
-    title: "Fork & Co.",
-    client: "Fork & Co.",
-    tech: "React",
-    category: "Mobile · Food",
-    year: "2024",
-    image: projReact2,
-    excerpt: "A React Native food delivery experience with realtime tracking and one-tap reorder.",
-    metrics: [
-      { label: "Orders / user", value: "+47%" },
-      { label: "Crash-free", value: "99.8%" },
-      { label: "App rating", value: "4.8★" },
-    ],
-    scope: ["React Native", "Realtime tracking", "Push & deep links"],
-  },
-  {
-    slug: "atlas-crm",
-    title: "Atlas CRM",
-    client: "Atlas Group",
-    tech: "PHP",
-    category: "Custom · Internal",
+    slug: "lemoon-baby",
+    title: "Le'Moon Baby",
+    client: "Le'Moon",
     year: "2025",
-    image: projPhp1,
-    excerpt: "A custom Laravel CRM replacing 4 disconnected tools across sales, ops and finance.",
-    metrics: [
-      { label: "Tools replaced", value: "4 → 1" },
-      { label: "Cycle time", value: "-52%" },
-      { label: "Saved / mo.", value: "$8.4K" },
-    ],
-    scope: ["Laravel", "Role based access", "Stripe + Razorpay"],
+    url: "https://www.lemoonbaby.in/",
+    image: "/work-covers/cover-21.webp",
+    excerpt:
+      "Premium baby and toddler wear: rompers, dresses and accessories with a soft, giftable brand experience.",
+    ...S.shopifyKids,
   },
   {
-    slug: "fintech-ledger",
-    title: "Ledger Fintech",
-    client: "Ledger Pay",
-    tech: "HTML",
-    category: "Marketing · Fintech",
-    year: "2024",
-    image: projHtml1,
-    excerpt: "A pixel-perfect marketing site with Webflow-grade animations, hand-built in HTML & CSS.",
-    metrics: [
-      { label: "Lighthouse", value: "98" },
-      { label: "Lead form CR", value: "+29%" },
-      { label: "Time to ship", value: "9 days" },
-    ],
-    scope: ["Static HTML", "GSAP motion", "A/B testing"],
+    slug: "suva-attire",
+    title: "Suva Attire",
+    client: "Suva Attire",
+    year: "2025",
+    url: "https://suvaattire.com/",
+    image: "/work-covers/cover-12.png",
+    excerpt:
+      "Tamil-forward ethnic and fusion: kurti sets, maxis and brocade drops with video-led merchandising.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "mini-tantini",
+    title: "Mini Tantini",
+    client: "Mini Tantini",
+    year: "2026",
+    url: "https://www.minitantini.com/",
+    image: "/work-covers/cover-13.png",
+    excerpt:
+      "Playful kidswear on pure-cotton positioning: collections, trust badges, and parent-first product detail.",
+    ...S.shopifyKids,
+  },
+  {
+    slug: "seams-to-love",
+    title: "Seams to Love",
+    client: "Seams to Love",
+    year: "2025",
+    url: "https://seamstolove.com/",
+    image: "/work-covers/cover-14.png",
+    excerpt:
+      "Contemporary dresses and budget tiers: tiered collections, promos, and a warm boutique tone.",
+    ...S.shopifyFashion,
+  },
+  {
+    slug: "cloudy-fit-by-asmitha",
+    title: "Cloudy Fit by Asmitha",
+    client: "Cloudy Fit",
+    year: "2025",
+    url: "https://cloudyfitbyasmitha.com/",
+    image: "/work-covers/cover-15.png",
+    excerpt:
+      "Maternity-friendly loungewear and nightwear: inclusive sizing, feeding-friendly highlights, and calm UX.",
+    ...S.shopifyLounge,
+  },
+  {
+    slug: "oggha",
+    title: "Oggha",
+    client: "Oggha",
+    year: "2025",
+    url: "https://www.oghaclothing.com/",
+    image: "/work-covers/cover-16.png",
+    excerpt:
+      "Contemporary women’s apparel: dresses, sets and tailored coordinates with a bold, modern storefront.",
+    ...S.shopifyFashion,
+  },
+  {
+    slug: "hrudhay",
+    title: "Hrudhay",
+    client: "Hrudhay",
+    year: "2025",
+    url: "https://hrudhay.com/",
+    image: "/work-covers/cover-17.png",
+    excerpt:
+      "Occasion and everyday ethnic: gowns, anarkalis and kurtis with editorial lookbooks and fast mobile browse.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "angelic-weaves",
+    title: "Angelic Weaves",
+    client: "Angelic Weaves",
+    year: "2025",
+    url: "https://angelicweaves.com/",
+    image: "/work-covers/cover-18.png",
+    excerpt:
+      "Kurtis, dresses and co-ords: polished Shopify UX with budget and clearance paths for steady conversion.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "madhavas-the-design-studio",
+    title: "Madhavas The Design Studio",
+    client: "Madhavas",
+    year: "2025",
+    url: "https://madhavasds.com/",
+    image: "/work-covers/cover-19.png",
+    excerpt:
+      "Commercial and residential interior design: portfolio, process, and lead generation on a bespoke WordPress build.",
+    ...S.wordpressInterior,
+  },
+  {
+    slug: "plumeria-by-jeyashilpa",
+    title: "Plumeria by Jeyashilpa",
+    client: "Plumeria",
+    year: "2025",
+    url: "https://plumeriabyj.com/",
+    image: "/logos/client-20.png",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "velzaara",
+    title: "Velzaara",
+    client: "Velzaara",
+    year: "2025",
+    url: "https://velzaara.com/",
+    image: "/work-covers/cover-22.webp",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "the-alp-stores",
+    title: "The Alp Stores",
+    client: "The Alp Stores",
+    year: "2025",
+    url: "https://www.thealpstores.com/",
+    image: "/work-covers/cover-23.webp",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "momify",
+    title: "Momify",
+    client: "Momify",
+    year: "2025",
+    url: "https://themomify.com/",
+    image: "/work-covers/cover-05.png",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "malliclothing",
+    title: "Malliclothing",
+    client: "Malliclothing",
+    year: "2025",
+    url: "https://malliclothing.in/",
+    image: "/work-covers/cover-11.png",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "sampradaya",
+    title: "Sampradaya",
+    client: "Sampradaya",
+    year: "2025",
+    url: "https://sampradaya.store/",
+    image: "/work-covers/cover-24.webp",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "studiomirela",
+    title: "Studio Mirela",
+    client: "Studio Mirela",
+    year: "2025",
+    url: "https://studiomirela.us/",
+    image: "/work-covers/cover-25.webp",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "thugiil",
+    title: "Thugiil",
+    client: "Thugiil",
+    year: "2025",
+    url: "https://thugiil.in/",
+    image: "/work-covers/cover-26.webp",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
+  },
+  {
+    slug: "pinkstories",
+    title: "Pink Stories",
+    client: "Pink Stories",
+    year: "2025",
+    url: "https://pinkstories.ae/",
+    image: "/work-covers/cover-27.webp",
+    excerpt:
+      "Boutique ethnic wear: floral, occasion-led branding and a refined product narrative on Shopify.",
+    ...S.shopifyEthnic,
   },
 ];
 
-export const TECH_FILTERS: ("All" | Tech)[] = ["All", "Shopify", "WordPress", "React", "PHP", "HTML"];
+export const TECH_FILTERS: ("All" | Tech)[] = ["All", "Shopify", "WordPress"];

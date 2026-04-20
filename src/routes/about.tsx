@@ -7,11 +7,11 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Wepix — A small studio with a big track record" },
+      { title: "About Wepix | A small studio with a big track record" },
       {
         name: "description",
         content:
-          "Meet Wepix — a focused team of designers and engineers who've shipped 200+ digital products for ambitious brands worldwide.",
+          "Meet Wepix: a focused team of designers and engineers who've shipped 200+ digital products for ambitious brands worldwide.",
       },
       { property: "og:title", content: "About Wepix" },
       { property: "og:description", content: "200+ projects, 98% client retention, 8 years of craft." },
@@ -34,8 +34,8 @@ function AboutPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-muted-foreground">
               Wepix is a small, senior team that partners closely with founders and growth leaders.
-              We obsess over the details — from the kerning of a button to the milliseconds on a
-              page load — because that's where great digital products are won.
+              We obsess over the details, from the kerning of a button to the milliseconds on a
+              page load, because that's where great digital products are won.
             </p>
           </Reveal>
         </div>

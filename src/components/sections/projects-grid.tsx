@@ -3,20 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Reveal } from "@/components/reveal";
-import { PROJECTS, TECH_FILTERS, type Project } from "@/data/projects";
+import { PROJECTS, TECH_FILTERS, projectCoverImage, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
 function ProjectCardInner({ p }: { p: Project }) {
+  const cover = projectCoverImage(p);
   return (
     <>
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted/30">
         <img
-          src={p.image}
-          alt={`${p.title} — ${p.category}`}
+          src={cover}
+          alt={`${p.title} homepage preview, ${p.category}`}
           width={1280}
-          height={896}
+          height={800}
           loading="lazy"
-          className="h-full w-full scale-[1.02] object-cover transition-transform duration-700 group-hover:scale-110"
+          decoding="async"
+          referrerPolicy="no-referrer"
+          className="h-full w-full scale-[1.02] object-cover object-top transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent opacity-90" />
         <div className="absolute left-4 top-4 flex gap-2">

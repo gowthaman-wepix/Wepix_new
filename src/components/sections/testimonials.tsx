@@ -6,7 +6,7 @@ const TESTIMONIALS = [
     name: "Aarav Mehta",
     role: "Founder, Lumen Apparel",
     quote:
-      "Wepix didn't just rebuild our Shopify store — they redesigned how our brand feels online. Conversions are up 38% and our team finally loves the backend.",
+      "Wepix didn't just rebuild our Shopify store; they redesigned how our brand feels online. Conversions are up 38% and our team finally loves the backend.",
     rating: 5,
   },
   {
@@ -20,7 +20,7 @@ const TESTIMONIALS = [
     name: "Daniel Rivera",
     role: "CEO, Estate Group",
     quote:
-      "From discovery to launch — clean process, zero drama. Our inquiries jumped 74% in the first quarter after launch.",
+      "From discovery to launch: clean process, zero drama. Our inquiries jumped 74% in the first quarter after launch.",
     rating: 5,
   },
   {

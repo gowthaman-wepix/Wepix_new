@@ -13,13 +13,13 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Wepix — High-converting Shopify, WordPress, React & PHP builds" },
+      { title: "Wepix | High-converting Shopify, WordPress, React & PHP builds" },
       {
         name: "description",
         content:
           "Wepix is a digital agency that designs and engineers websites and products that convert. Shopify, WordPress, React and custom PHP solutions.",
       },
-      { property: "og:title", content: "Wepix — Digital agency for ambitious brands" },
+      { property: "og:title", content: "Wepix | Digital agency for ambitious brands" },
       { property: "og:description", content: "200+ projects shipped. 98% client retention. Let's build yours." },
     ],
   }),
@@ -65,7 +65,7 @@ function HomePage() {
       <CtaBanner
         eyebrow="One last nudge"
         title="Let's build something amazing together"
-        subtitle="Tell us about your idea — we'll bring the strategy, design and engineering."
+        subtitle="Tell us about your idea, and we'll bring the strategy, design and engineering."
       />
     </>
   );

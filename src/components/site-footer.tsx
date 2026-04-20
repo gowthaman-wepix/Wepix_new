@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Instagram, Linkedin, Mail, Sparkles, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, LocateIcon, LocationEditIcon, Mail, MapPin, PhoneCall, PinIcon, Sparkles, TimerIcon, Twitter } from "lucide-react";
+import { TiruppurWithTooltip } from "@/components/tiruppur-with-tooltip";
 
 export function SiteFooter() {
   return (
@@ -52,8 +53,15 @@ export function SiteFooter() {
           <h4 className="text-sm font-semibold">Get in touch</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@wepix.in</li>
-            <li>Mon — Sat · 10:00 to 19:00 IST</li>
-            <li>Remote-first · India · Worldwide</li>
+            <li className="flex items-center gap-2"><PhoneCall className="h-4 w-4" /> +91 93423 66970</li>
+            <li className="flex items-center gap-2"><TimerIcon className="h-4 w-4" /> Mon to Fri · 10:00AM to 7:00PM IST</li>
+            <li className="flex items-center gap-2">
+              <MapPin className="h-4 w-4 shrink-0" />
+              <span>
+                <TiruppurWithTooltip />
+                , Tamil Nadu (HQ — the OG)
+              </span>
+            </li>
           </ul>
         </div>
       </div>

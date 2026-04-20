@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { CtaBanner } from "@/components/sections/cta-banner";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS, projectCoverImage } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -13,8 +13,8 @@ export const Route = createFileRoute("/work/$slug")({
   },
   head: ({ loaderData }) => {
     const p = loaderData?.project;
-    if (!p) return { meta: [{ title: "Project not found — Wepix" }] };
-    const title = `${p.title} — ${p.category} | Wepix Case Study`;
+    if (!p) return { meta: [{ title: "Project not found | Wepix" }] };
+    const title = `${p.title} | ${p.category} | Wepix Case Study`;
     const description = p.excerpt;
     return {
       meta: [
@@ -22,8 +22,8 @@ export const Route = createFileRoute("/work/$slug")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        { property: "og:image", content: p.image },
-        { property: "twitter:image", content: p.image },
+        { property: "og:image", content: projectCoverImage(p) },
+        { property: "twitter:image", content: projectCoverImage(p) },
       ],
     };
   },
@@ -46,6 +46,7 @@ export const Route = createFileRoute("/work/$slug")({
 
 function ProjectDetailPage() {
   const { project } = Route.useLoaderData();
+  const cover = projectCoverImage(project);
   const currentIndex = PROJECTS.findIndex((p) => p.slug === project.slug);
   const prevProject = currentIndex > 0 ? PROJECTS[currentIndex - 1] : PROJECTS[PROJECTS.length - 1];
   const nextProject = currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : PROJECTS[0];
@@ -103,11 +104,14 @@ function ProjectDetailPage() {
           <Reveal>
             <div className="overflow-hidden rounded-3xl border border-border">
               <img
-                src={project.image}
-                alt={`${project.title} — ${project.category}`}
-                width={1280}
-                height={896}
-                className="h-full w-full object-cover"
+                src={cover}
+                alt={`${project.title} homepage preview, ${project.category}`}
+                width={1600}
+                height={1000}
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                className="max-h-[min(72vh,560px)] w-full object-cover object-top"
               />
             </div>
           </Reveal>
@@ -208,7 +212,7 @@ function ProjectDetailPage() {
       <CtaBanner
         eyebrow="Like what you see?"
         title="Let's build your next case study"
-        subtitle="Tell us about your goals — we'll bring the strategy, design and engineering."
+        subtitle="Tell us about your goals, and we'll bring the strategy, design and engineering."
       />
     </>
   );

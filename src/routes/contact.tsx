@@ -1,12 +1,14 @@
+import type { ComponentType, ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/sections/contact-form";
+import { TiruppurWithTooltip } from "@/components/tiruppur-with-tooltip";
 import { Reveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Wepix — Start your project today" },
+      { title: "Contact Wepix | Start your project today" },
       {
         name: "description",
         content:
@@ -34,13 +36,13 @@ function ContactPage() {
             </h1>
             <p className="mt-5 max-w-md text-muted-foreground">
               Share a few details and we'll be in touch within 24 hours with next steps. No sales
-              pitch — just a real conversation about your goals.
+              pitch, just a real conversation about your goals.
             </p>
 
             <div className="mt-10 space-y-5">
               <ContactInfo icon={Mail} label="Email" value="hello@wepix.in" />
-              <ContactInfo icon={Phone} label="Phone" value="+91 90000 00000" />
-              <ContactInfo icon={MapPin} label="Studio" value="Remote-first · India · Worldwide" />
+              <ContactInfo icon={Phone} label="Phone" value="+91 93423 66970" />
+              <ContactInfo icon={MapPin} label="Studio" value="திருப்பூர், Tamil Nadu (HQ — the OG)" />
             </div>
           </div>
         </Reveal>
@@ -58,9 +60,9 @@ function ContactPage() {
 function ContactInfo({
   icon: Icon, label, value,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
   label: string;
-  value: string;
+  value: ReactNode;
 }) {
   return (
     <div className="flex items-start gap-4">

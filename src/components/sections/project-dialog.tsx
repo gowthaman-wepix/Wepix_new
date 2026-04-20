@@ -2,7 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import type { Project } from "@/data/projects";
+import { projectCoverImage, type Project } from "@/data/projects";
 
 export function ProjectDialog({
   project,
@@ -16,11 +16,16 @@ export function ProjectDialog({
       <DialogContent className="max-w-3xl overflow-hidden border-border bg-card p-0">
         {project && (
           <div className="max-h-[85vh] overflow-y-auto">
-            <div className="relative aspect-[16/10] overflow-hidden">
+            <div className="relative aspect-[16/10] overflow-hidden bg-muted/30">
               <img
-                src={project.image}
-                alt={project.title}
-                className="h-full w-full object-cover"
+                src={projectCoverImage(project)}
+                alt={`${project.title} homepage preview`}
+                width={1600}
+                height={1000}
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                className="h-full w-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
               <div className="absolute left-5 top-5 flex gap-2">

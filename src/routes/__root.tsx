@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -33,7 +34,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Wepix — Digital Agency for Shopify, WordPress, React & PHP" },
+      { title: "Wepix | Digital Agency for Shopify, WordPress, React & PHP" },
       {
         name: "description",
         content:
@@ -76,12 +77,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <ThemeProvider>
-      <SiteHeader />
-      <main className="min-h-screen">
-        <Outlet />
-      </main>
-      <SiteFooter />
-      <Toaster richColors position="top-right" />
+      <TooltipProvider>
+        <SiteHeader />
+        <main className="min-h-screen">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <Toaster richColors position="top-right" />
+      </TooltipProvider>
     </ThemeProvider>
   );
 }

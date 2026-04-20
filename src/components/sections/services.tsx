@@ -41,7 +41,7 @@ export function Services() {
               Services that <span className="text-gradient-brand">drive growth</span>
             </h2>
             <p className="max-w-2xl text-muted-foreground">
-              From a one-page funnel to a multi-store ecommerce ecosystem — we design, build and
+              From a one-page funnel to a multi-store ecommerce ecosystem, we design, build and
               scale digital experiences obsessed with outcomes.
             </p>
           </div>

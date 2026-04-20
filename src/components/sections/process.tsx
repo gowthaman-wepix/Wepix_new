@@ -4,8 +4,8 @@ import { Reveal } from "@/components/reveal";
 const STEPS = [
   { icon: Compass, t: "Discovery", d: "We dig into your goals, audience and competitors to map a clear path forward." },
   { icon: PenTool, t: "Design", d: "We craft pixel-perfect, conversion-focused designs that feel uniquely yours." },
-  { icon: Code2, t: "Development", d: "Engineered with care — fast, accessible and built to scale with your business." },
-  { icon: Rocket, t: "Launch", d: "We test, optimise, and ship — then keep iterating based on real-world data." },
+  { icon: Code2, t: "Development", d: "Engineered with care: fast, accessible and built to scale with your business." },
+  { icon: Rocket, t: "Launch", d: "We test, optimise, and ship, then keep iterating based on real-world data." },
 ];
 
 export function Process() {
@@ -21,7 +21,7 @@ export function Process() {
               A proven <span className="text-gradient-brand">4-step process</span>
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-              Transparent, collaborative and focused on outcomes — every single step.
+              Transparent, collaborative and focused on outcomes at every single step.
             </p>
           </div>
         </Reveal>

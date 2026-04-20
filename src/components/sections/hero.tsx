@@ -49,7 +49,7 @@ export function Hero() {
           className="mx-auto mt-6 max-w-2xl text-center text-base text-muted-foreground sm:text-lg"
         >
           Wepix is a results-driven digital agency designing & engineering Shopify stores,
-          WordPress sites, React apps and custom PHP platforms — built to perform.
+          WordPress sites, React apps and custom PHP platforms, built to perform.
         </motion.p>
 
         <motion.div

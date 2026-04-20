@@ -22,7 +22,7 @@ export function AboutSnapshot() {
             </h2>
             <p className="mt-5 text-muted-foreground">
               Wepix is a focused team of designers and engineers who care deeply about the craft.
-              We've shipped 200+ digital products — from D2C Shopify stores doing 7-figures to
+              We've shipped 200+ digital products, from D2C Shopify stores doing 7-figures to
               custom Laravel platforms running internal operations for growing companies.
             </p>
             <p className="mt-3 text-muted-foreground">

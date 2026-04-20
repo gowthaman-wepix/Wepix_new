@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 export function CtaBanner({
   eyebrow = "Ready when you are",
   title = "Let's build something amazing together.",
-  subtitle = "From scrappy MVPs to flagship platforms — bring us the brief, we'll bring the craft.",
+  subtitle = "From scrappy MVPs to flagship platforms: bring us the brief, and we'll bring the craft.",
   primaryLabel = "Start Your Project",
   primaryTo = "/contact",
   secondaryLabel = "Contact Us",
